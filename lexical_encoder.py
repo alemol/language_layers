@@ -19,29 +19,29 @@ class LexicalEncoder:
 
     @classmethod
     def load_from_file(cls, filename):
-        print('Loading LexicalEncoder instance...')
+        #print('Loading LexicalEncoder instance...')
         with open(filename, 'rb') as f:
             lexcoder = pickle.load(f)
             return lexcoder
 
     @property
     def bpencoder(self):
-        print("Getting subword encoder...")
+        #print("Getting subword encoder...")
         return self._bpencoder
 
     @property
     def probs_subwords(self):
-        print("Getting subword probability dist...")
+        #print("Getting subword probability dist...")
         return self._probs_subwords
 
     @property
     def ents_subwords(self):
-        print("Getting subword entropy dist...")
+        #print("Getting subword entropy dist...")
         return self._subwords_entropies
 
     @bpencoder.setter
     def bpencoder(self, bpencoder_instance):
-        print("Setting subword encoder...")
+        #print("Setting subword encoder...")
         if not isinstance(bpencoder_instance, tfds.features.text.SubwordTextEncoder):
             raise ValueError("bpencoder must be an instance of SubwordTextEncoder")
         self._bpencoder = bpencoder_instance
@@ -71,13 +71,13 @@ class LexicalEncoder:
             return ents
 
     def save_to_file(self, filename):
-        print('Saving LexicalEncoder instance...')
+        #print('Saving LexicalEncoder instance...')
         with open(filename+'.lexenc', 'wb') as f:
             pickle.dump(self, f)
 
     def set_subwords_distributions(self, corpus_generator):
         """Computes the subword prob dist"""
-        print("Setting subword probability and entropy distributions...")
+        #print("Setting subword probability and entropy distributions...")
         if not self._bpencoder:
             raise ValueError("bpencoder must be set before")
         # Frequencies dist

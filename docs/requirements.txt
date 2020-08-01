@@ -3,3 +3,4 @@ tensorflow-datasets==3.2.1
 gensim==3.8.3
 Cython==0.29.21
 pandas==1.0.5
+nltk==3.5
